@@ -4,7 +4,7 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState([]);
   const [selectLeagues, setSelectLeagues] = useState("eng.1");
-  const [selectYear, setSelectYear] = useState(2019);
+  const [selectYear, setSelectYear] = useState(2021);
 
   const url = `https://api-football-standings.azharimm.site/leagues/${selectLeagues}/standings?season=${selectYear}`;
 
@@ -21,11 +21,22 @@ const Main = () => {
     fetchData();
   }, [selectLeagues, selectYear]);
 
+  const changeHandler = (e) => {
+    const selectedLeague = e.target.value;
+    setSelectLeagues(selectedLeague);
+  };
+
   return (
     <div className="main">
       <div className="select-fields">
         <div className="league-dropdown">
-          <select className="league-names">
+          <select
+            name="select-league"
+            id="select-league"
+            className="league-names"
+            onChange={changeHandler}
+            defaultValue={selectLeagues}
+          >
             <option value={"arg.1"}>
               Argentine Liga Profesional de Fútbol
             </option>
@@ -51,19 +62,24 @@ const Main = () => {
           </select>
         </div>
         <div className="year">
-          <select>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            <option>2019</option>
-            <option>2020</option>
-            <option>2021</option>
-            <option>2022</option>
+          <select
+            name="select-year"
+            id="select-year"
+            className="year-names"
+            defaultValue={selectYear}
+          >
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
           </select>
         </div>
       </div>
