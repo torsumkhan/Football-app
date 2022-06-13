@@ -5,8 +5,10 @@ const Main = () => {
   const [standings, setStandings] = useState([]);
   const [selectLeagues, setSelectLeagues] = useState("eng.1");
   const [selectYear, setSelectYear] = useState(2021);
+  const [logo, setLogo] = useState("");
 
   const url = `https://api-football-standings.azharimm.site/leagues/${selectLeagues}/standings?season=${selectYear}`;
+  const urlleagueName = `https://api-football-standings.azharimm.site/leagues/${selectLeagues}`;
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -17,10 +19,21 @@ const Main = () => {
     setStandings(json.data.standings);
   };
 
+  //Fetch league logos
+  const fetchData2 = async () => {
+    setIsLoading(true);
+    const response = await fetch(urlleagueName);
+    const json = await response.json();
+
+    setIsLoading(false);
+    setLogo(json.data.logos.light);
+  };
+
   console.log(standings);
 
   useEffect(() => {
     fetchData();
+    fetchData2();
   }, [selectLeagues, selectYear]);
 
   const changeHandler = (e) => {
@@ -82,6 +95,7 @@ const Main = () => {
         </select>
       </div>
       <div>
+        <img src={logo} />
         {standings.map((rank, index) => {
           return (
             <div>
