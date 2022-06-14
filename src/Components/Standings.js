@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Standings = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -96,11 +97,11 @@ const Standings = () => {
       </div>
       <div>
         {isLoading ? (
-          <h3>Loading ...</h3>
+          <ClipLoader color="#3d195b" />
         ) : (
           <div className="standing-container">
             <img src={logo} className="league-logo" />
-            <table style={{ borderSpacing: "24px 0" }}>
+            <table style={{ borderSpacing: "30px 0" }}>
               <tr>
                 <th>Rank</th>
                 <th></th>
@@ -114,7 +115,7 @@ const Standings = () => {
               {standings.map((rank, index) => {
                 return (
                   <tr>
-                    <td>{index + 1} </td>
+                    <td className="rank-row">{index + 1} </td>
                     <td>
                       <img
                         className="team-logo"
