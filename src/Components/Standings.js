@@ -95,18 +95,24 @@ const Standings = () => {
         </select>
       </div>
       <div>
-        <img src={logo} />
-        {standings.map((rank, index) => {
-          return (
-            <div>
-              <h3>
-                {index + 1} {rank.team.name} {rank.stats[3].displayValue}{" "}
-                {rank.stats[6].displayValue} {rank.stats[0].displayValue}{" "}
-                {rank.stats[1].displayValue} {rank.stats[2].displayValue}
-              </h3>
-            </div>
-          );
-        })}
+        {isLoading ? (
+          <h3>Loading ...</h3>
+        ) : (
+          <div className="standing-container">
+            <img src={logo} className="league-logo" />
+            {standings.map((rank, index) => {
+              return (
+                <div className="table-container">
+                  {index + 1}{" "}
+                  <img className="team-logo" src={rank.team.logos[0].href} />{" "}
+                  {rank.team.name} {rank.stats[3].displayValue}{" "}
+                  {rank.stats[6].displayValue} {rank.stats[0].displayValue}{" "}
+                  {rank.stats[1].displayValue} {rank.stats[2].displayValue}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );
