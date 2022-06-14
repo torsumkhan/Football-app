@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Main = () => {
+const Standings = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [standings, setStandings] = useState([]);
   const [selectLeagues, setSelectLeagues] = useState("eng.1");
@@ -99,7 +99,11 @@ const Main = () => {
         {standings.map((rank, index) => {
           return (
             <div>
-              <h3>{rank.team.name}</h3>
+              <h3>
+                {index + 1} {rank.team.name} {rank.stats[3].displayValue}{" "}
+                {rank.stats[6].displayValue} {rank.stats[0].displayValue}{" "}
+                {rank.stats[1].displayValue} {rank.stats[2].displayValue}
+              </h3>
             </div>
           );
         })}
@@ -108,4 +112,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Standings;
