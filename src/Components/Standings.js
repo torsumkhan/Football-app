@@ -100,17 +100,41 @@ const Standings = () => {
         ) : (
           <div className="standing-container">
             <img src={logo} className="league-logo" />
-            {standings.map((rank, index) => {
-              return (
-                <div className="table-container">
-                  {index + 1}{" "}
-                  <img className="team-logo" src={rank.team.logos[0].href} />{" "}
-                  {rank.team.name} {rank.stats[3].displayValue}{" "}
-                  {rank.stats[6].displayValue} {rank.stats[0].displayValue}{" "}
-                  {rank.stats[1].displayValue} {rank.stats[2].displayValue}
-                </div>
-              );
-            })}
+            <table style={{ borderSpacing: "24px 0" }}>
+              <tr>
+                <th>Rank</th>
+                <th></th>
+                <th>Club</th>
+                <th>MP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>Pts</th>
+              </tr>
+              {standings.map((rank, index) => {
+                return (
+                  <tr>
+                    <td>{index + 1} </td>
+                    <td>
+                      <img
+                        className="team-logo"
+                        src={rank.team.logos[0].href}
+                      />
+                    </td>
+                    <td>
+                      {" "}
+                      <p>{rank.team.name}</p>
+                    </td>
+                    <td>{rank.stats[3].displayValue}</td>
+                    <td>{rank.stats[0].displayValue}</td>
+                    <td>{rank.stats[2].displayValue}</td>
+                    <td>{rank.stats[1].displayValue}</td>
+
+                    <td>{rank.stats[6].displayValue}</td>
+                  </tr>
+                );
+              })}
+            </table>
           </div>
         )}
       </div>

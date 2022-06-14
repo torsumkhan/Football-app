@@ -172,3 +172,18 @@ outline: 0;
   gap: 8px;
 
 }
+
+.standing-container{
+  text-align: center;
+  margin: 12px auto;
+
+}
+
+.standing-container table {
+  text-align: center;
+  margin: 20px auto;
+}
+
+p {
+  text-align: left;
+}
