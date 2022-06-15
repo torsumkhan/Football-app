@@ -217,4 +217,8 @@ tr:nth-child(2)::after {
   content: '🏆'
 }
 
+tr:nth-child(3)::after {
+  content: '🥈'
+}
+
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Standings = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,8 +29,6 @@ const Standings = () => {
     setIsLoading(false);
     setLogo(json.data.logos.light);
   };
-
-  console.log(standings);
 
   useEffect(() => {
     fetchData();
@@ -81,23 +79,22 @@ const Standings = () => {
           defaultValue={selectYear}
           onChange={(e) => setSelectYear(e.target.value)}
         >
-          <option value="2011">2011</option>
-          <option value="2012">2012</option>
-          <option value="2013">2013</option>
-          <option value="2014">2014</option>
-          <option value="2015">2015</option>
-          <option value="2016">2016</option>
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-          <option value="2022">2022</option>
+          <option value="2011">2011-12</option>
+          <option value="2012">2012-13</option>
+          <option value="2013">2013-14</option>
+          <option value="2014">2014-15</option>
+          <option value="2015">2015-16</option>
+          <option value="2016">2016-17</option>
+          <option value="2017">2017-18</option>
+          <option value="2018">2018-19</option>
+          <option value="2019">2019-20</option>
+          <option value="2020">2020-21</option>
+          <option value="2021">2021-22</option>
         </select>
       </div>
       <div>
         {isLoading ? (
-          <ClipLoader color="#3d195b" />
+          <PulseLoader color="#3d195b" />
         ) : (
           <div className="standing-container">
             <img src={logo} className="league-logo" />
@@ -114,7 +111,7 @@ const Standings = () => {
               </tr>
               {standings.map((rank, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td className="rank-row">{index + 1} </td>
                     <td>
                       <img
